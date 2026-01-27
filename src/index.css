@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +11,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --main-black: #101828;
+  --dark-blue: #475467;
+  --dark-gray: #6c717b;
+  --red: #e44848;
+  --red-hover: #d84343;
+  --yellow: #ffc531;
+  --light-gray: #dadde1;
+  --lighter-gray: #f2f4f7;
+  --dirt-white: #f7f7f7;
+  --white: #ffffff;
 }
 
 a {
@@ -25,7 +36,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -37,12 +48,6 @@ h1 {
 
 p {
   margin: 5px 0;
-}
-
-ul,
-ol {
-  list-style: none;
-  padding: 0;
 }
 
 button {
@@ -76,10 +81,6 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-* {
-  box-sizing: border-box;
 }
 
 input {

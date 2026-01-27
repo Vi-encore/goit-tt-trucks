@@ -5,10 +5,14 @@ import { Routes, Route } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import Navigation from '../Navigation/Navigation';
 
-const HomePage = lazy(() => import('../HomePage/HomePage'));
-const CatalogPage = lazy(() => import('../CatalogPage/CatalogPage'));
-const NotFoundPage = lazy(() => import('../NotFoundPage/NotFoundPage'));
-const CamperPage = lazy(() => import('../CamperPage/CamperPage'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
+const NotFoundPage = lazy(
+  () => import('../../pages/NotFoundPage/NotFoundPage')
+);
+const CamperPage = lazy(
+  () => import('../../pages/CamperPage/CamperPage')
+);
 
 const CamperFeatures = lazy(() => import('../CamperFeatures/CamperFeatures'));
 const CamperReviews = lazy(() => import('../CamperReviews/CamperReviews'));
