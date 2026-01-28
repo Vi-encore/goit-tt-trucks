@@ -1,0 +1,17 @@
+.button {
+  color: var(--white);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.05px;
+
+  padding: 16px 49px;
+  background-color: var(--red);
+  border-radius: 25px;
+
+  transition: background-color 0.15s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--red-hover);
+}
