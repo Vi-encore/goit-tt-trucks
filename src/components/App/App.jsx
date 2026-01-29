@@ -1,18 +1,18 @@
 import './App.module.css';
 
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import Navigation from '../Navigation/Navigation';
+import { useDispatch } from 'react-redux';
+import { fetchCampers } from '../../redux/campersOPs';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
 const NotFoundPage = lazy(
   () => import('../../pages/NotFoundPage/NotFoundPage')
 );
-const CamperPage = lazy(
-  () => import('../../pages/CamperPage/CamperPage')
-);
+const CamperPage = lazy(() => import('../../pages/CamperPage/CamperPage'));
 
 const CamperFeatures = lazy(() => import('../CamperFeatures/CamperFeatures'));
 const CamperReviews = lazy(() => import('../CamperReviews/CamperReviews'));
@@ -20,6 +20,12 @@ const CamperReviews = lazy(() => import('../CamperReviews/CamperReviews'));
 //fix suspense
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCampers());
+  }, [dispatch]);
+
   return (
     <>
       <Navigation />

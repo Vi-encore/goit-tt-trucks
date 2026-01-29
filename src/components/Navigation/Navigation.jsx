@@ -14,7 +14,7 @@ export default function Navigation() {
     <nav className={css['nav-container']}>
       <div>
         <NavLink to="/">
-          <img src="/public/Logo.webp" alt="Travel Trucks logo" />
+          <img src="/Logo.webp" alt="Travel Trucks logo" />
         </NavLink>
       </div>
       <ul className={css.nav}>
