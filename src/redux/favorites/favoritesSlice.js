@@ -15,4 +15,4 @@ const slice = createSlice({
 export const favoritesSliceReducer = slice.reducer;
 export const { toggleFavorite } = slice.actions;
 
-export const selectFavorites = (state) => state.favorites.items;
+export const selectFavorites = state => state.favorites.items;

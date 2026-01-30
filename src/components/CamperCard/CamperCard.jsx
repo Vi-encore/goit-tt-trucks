@@ -13,7 +13,6 @@ export default function CamperCard({ camper }) {
 
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  // const isFavorite = Array.isArray(favorites) && favorites.includes(id);
 
   function handleAddFavorite() {
     dispatch(toggleFavorite(id));
@@ -29,7 +28,7 @@ export default function CamperCard({ camper }) {
           <h2>{name}</h2>
           <p>€{price.toFixed(2)}</p>
           <button className={css['favorites-btn']} onClick={handleAddFavorite}>
-            <svg width="26" height="24">
+            <svg width="26" height="24" className={css['favorites-icon']}>
               {favorites.includes(id) ? (
                 <use href="/icons.svg#icon-heart-selected" />
               ) : (
