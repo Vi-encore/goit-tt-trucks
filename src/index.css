@@ -27,6 +27,8 @@
 #root {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
 }
 
 a {
@@ -36,8 +38,10 @@ a {
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--white);
 }
 
 h1 {

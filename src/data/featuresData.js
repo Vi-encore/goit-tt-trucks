@@ -1,0 +1,25 @@
+export const featuresData = [
+  {
+    key: 'transmission',
+    label: 'Automatic',
+    svg: 'icon-automatic',
+    value: 'automatic',
+  },
+  {
+    key: 'transmission',
+    label: 'Manual',
+    svg: 'icon-manual',
+    value: 'manual',
+  },
+  { key: 'kitchen', label: 'Kitchen', svg: 'icon-kitchen' },
+  { key: 'ac', label: 'AC', svg: 'icon-ac' },
+  { key: 'bathroom', label: 'Bathroom', svg: 'icon-bathroom' },
+  { key: 'tv', label: 'TV', svg: 'icon-tv' },
+  { key: 'radio', label: 'Radio', svg: 'icon-radio' },
+  { key: 'gas', label: 'Gas', svg: 'icon-gas' },
+  { key: 'microwave', label: 'Microwave', svg: 'icon-microwave' },
+  { key: 'refrigerator', label: 'Fridge', svg: 'icon-fridge' },
+  { key: 'engine', label: 'Hybrid', svg: 'icon-petrol', value: 'hybrid' },
+  { key: 'engine', label: 'Diesel', svg: 'icon-petrol', value: 'diesel' },
+  { key: 'engine', label: 'Petrol', svg: 'icon-petrol', value: 'petrol' },
+];

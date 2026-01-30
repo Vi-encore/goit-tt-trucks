@@ -1,16 +1,15 @@
 import { useSelector } from 'react-redux';
 import css from './CatalogPage.module.css';
-import { selectCampers, selectLoading } from '../../redux/campersSlice';
+import { selectLoading } from '../../redux/campersSlice';
 import { MoonLoader } from 'react-spinners';
+import FiltersForm from '../../components/FiltersForm/FiltersForm';
+import CampersList from '../../components/CampersList/CampersList';
 
 export default function CatalogPage() {
-  const campers = useSelector(selectCampers);
   const isLoading = useSelector(selectLoading);
 
-  console.log(campers);
-
   return (
-    <>
+    <div className={css.container}>
       {isLoading && (
         <MoonLoader
           color="#d15065"
@@ -18,8 +17,10 @@ export default function CatalogPage() {
           size="80px"
         />
       )}
-
-
-    </>
+      <FiltersForm />
+      <CampersList />
+    </div>
   );
 }
+
+//fix loader???
