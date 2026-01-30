@@ -10,6 +10,14 @@ export default function Button({ onClick, text, to }) {
     );
   }
 
+  if(!onClick && !to) {
+    return (
+    <button type='submit' className={css.button}>
+      {text}
+    </button>
+  );
+  }
+
   return (
     <button onClick={onClick} className={css.button}>
       {text}

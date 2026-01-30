@@ -71,6 +71,10 @@
   gap: 4px;
 }
 
+.rating p {
+  border-bottom: 1px solid var(--main-black);
+}
+
 .rating svg {
   fill: var(--yellow);
 }

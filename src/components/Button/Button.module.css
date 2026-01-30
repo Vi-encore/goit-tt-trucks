@@ -8,14 +8,20 @@
   padding: 16px 49px;
   background-color: var(--red);
   border-radius: 25px;
+  border: none;
 
   transition: background-color 0.15s ease-in-out;
 
   display: inline-block;
-  
-  
 }
 
 .button:hover {
+  background-color: var(--red-hover);
+  border: none;
+}
+
+.button:focus {
+  border: none;
+  outline: none;
   background-color: var(--red-hover);
 }
