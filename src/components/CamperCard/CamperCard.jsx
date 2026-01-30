@@ -1,10 +1,23 @@
 import css from './CamperCard.module.css';
 import CamperFeatures from '../CamperFeatures/CamperFeatures';
 import Button from '../Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectFavorites,
+  toggleFavorite,
+} from '../../redux/favorites/favoritesSlice';
 
 export default function CamperCard({ camper }) {
   const { id, name, price, rating, reviews, location, description, gallery } =
     camper;
+
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  // const isFavorite = Array.isArray(favorites) && favorites.includes(id);
+
+  function handleAddFavorite() {
+    dispatch(toggleFavorite(id));
+  }
 
   return (
     <li className={css.container}>
@@ -15,9 +28,15 @@ export default function CamperCard({ camper }) {
         <div className={css.header}>
           <h2>{name}</h2>
           <p>€{price.toFixed(2)}</p>
-          <svg width="26" height="24">
-            <use href="/icons.svg#icon-heart" />
-          </svg>
+          <button className={css['favorites-btn']} onClick={handleAddFavorite}>
+            <svg width="26" height="24">
+              {favorites.includes(id) ? (
+                <use href="/icons.svg#icon-heart-selected" />
+              ) : (
+                <use href="/icons.svg#icon-heart" />
+              )}
+            </svg>
+          </button>
         </div>
         <div className={css['rating-location']}>
           <div className={css.rating}>
@@ -45,4 +64,4 @@ export default function CamperCard({ camper }) {
   );
 }
 
-// star fill in css ??? 
+// star fill in css ???

@@ -100,3 +100,9 @@
 
   color: var(--dark-blue);
 }
+
+.favorites-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

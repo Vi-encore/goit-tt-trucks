@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { selectCampers } from './campersSlice';
+import { selectCampers } from '../campers/campersSlice';
 
 const slice = createSlice({
   name: 'filters',
@@ -34,7 +34,7 @@ export const selectFilteredTrucks = createSelector(
 
       const matchesFeatures = featuresFilter.every(feature => {
         if (feature === 'automatic') return transmission === 'automatic';
-        return !!features[feature]; 
+        return !!features[feature];
       });
 
       return matchesLocation && matchesForm && matchesFeatures;

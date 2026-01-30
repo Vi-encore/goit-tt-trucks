@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './FiltersForm.module.css';
 import { useEffect } from 'react';
-import { changeFilters, selectFilters } from '../../redux/filtersSlice';
+import { changeFilters, selectFilters } from '../../redux/filters/filtersSlice';
 import * as Yup from 'yup';
 import { Field, Form, Formik } from 'formik';
 import { featuresOptions } from '../../data/featuresOptions';

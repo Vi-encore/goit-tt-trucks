@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCamperById, fetchCampers } from './campersOPs';
+import { fetchCamperById, fetchCampers } from './campersOps';
 
 const handlePending = state => {
   state.loading = true;
@@ -33,10 +33,9 @@ const camperSlice = createSlice({
   },
 });
 
-export const campersSliceReducer = camperSlice.reducer
-
+export const campersSliceReducer = camperSlice.reducer;
 
 // selectors
-export const selectCampers = (state) => state.campers.items;
-export const selectLoading = (state) => state.campers.loading;
-export const selectError = (state) => state.campers.error;
+export const selectCampers = state => state.campers.items;
+export const selectLoading = state => state.campers.loading;
+export const selectError = state => state.campers.error;
