@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './CampersList.module.css';
 import { useEffect } from 'react';
 import { fetchCampers } from '../../redux/campersOPs';
-import { selectCampers } from '../../redux/campersSlice';
 import CamperCard from '../../components/CamperCard/CamperCard';
+import { selectFilteredTrucks } from '../../redux/filtersSlice';
 
 export default function CampersList() {
   const dispatch = useDispatch();
@@ -12,7 +12,10 @@ export default function CampersList() {
     dispatch(fetchCampers());
   }, [dispatch]);
 
-  const campers = useSelector(selectCampers);
+  const campers = useSelector(selectFilteredTrucks);
+  
+
+
   return (
     <div className={css.container}>
       <ul className={css.list}>
