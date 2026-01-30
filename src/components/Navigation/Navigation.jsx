@@ -22,6 +22,7 @@ export default function Navigation() {
           <li key={to}>
             <NavLink
               to={to}
+              end
               className={({ isActive }) =>
                 isActive ? `${css['nav-link']} ${css.active}` : css['nav-link']
               }
