@@ -2,6 +2,7 @@ import css from './Button.module.css';
 import { Link } from 'react-router-dom';
 
 export default function Button({ onClick, text, to }) {
+
   if (to) {
     return (
       <Link to={to} className={css.button}>
@@ -10,12 +11,12 @@ export default function Button({ onClick, text, to }) {
     );
   }
 
-  if(!onClick && !to) {
+  if (!onClick && !to) {
     return (
-    <button type='submit' className={css.button}>
-      {text}
-    </button>
-  );
+      <button type="submit" className={css.button}>
+        {text}
+      </button>
+    );
   }
 
   return (

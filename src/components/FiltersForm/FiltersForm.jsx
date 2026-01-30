@@ -37,25 +37,32 @@ export default function FiltersForm() {
       >
         {errors => {
           return (
-            <Form>
-              <div>
+            <Form className={css.form}>
+              <div className={css['location-container']}>
                 <label htmlFor="location">Location</label>
-                <Field
-                  name="location"
-                  id="location"
-                  type="text"
-                  placeholder="City"
-                />
-                <svg width="16" height="16">
-                  <use href="/icons.svg#icon-map" />
-                </svg>
+                <div className={css.location}>
+                  <Field
+                    name="location"
+                    id="location"
+                    type="text"
+                    placeholder="City"
+                    className={css['location-field']}
+                  />
+                  <svg width="16" height="16" className={css.icon}>
+                    <use href="/icons.svg#icon-map" />
+                  </svg>
+                </div>
               </div>
-              {errors.location && <p>{errors.location}</p>}
-              <p>Filters</p>
+              {errors.location && (
+                <p className={css.error}>{errors.location}</p>
+              )}
+              <p className={css['filters-text']}>Filters</p>
               <div>
-                <fieldset>
-                  <legend>Vehicle equipment</legend>
-                  <div>
+                <fieldset className={css['field']}>
+                  <legend className={css['filters-name']}>
+                    Vehicle equipment
+                  </legend>
+                  <div className={css['filters-group']}>
                     {featuresOptions.map(feature => {
                       return (
                         <FilterCard
@@ -70,9 +77,9 @@ export default function FiltersForm() {
                 </fieldset>
               </div>
               <div>
-                <fieldset>
-                  <legend>Vehicle type</legend>
-                  <div>
+                <fieldset className={css['field']}>
+                  <legend className={css['filters-name']}>Vehicle type</legend>
+                  <div className={css['filters-group']}>
                     {vehicleTypes.map(type => {
                       return (
                         <FilterCard

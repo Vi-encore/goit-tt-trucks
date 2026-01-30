@@ -1,4 +1,105 @@
 .container {
- width: 360px;
- flex-shrink: 0;
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.form {
+  width: 100%;
+}
+
+.form > div:last-of-type {
+  margin-bottom: 40px;
+}
+
+.location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.location-container label {
+  color: var(--dark-gray);
+}
+
+.location {
+  position: relative;
+  width: 100%;
+}
+
+.location-field {
+  width: 100%;
+  background-color: var(--dirt-white);
+  outline: none;
+  border: 1px solid var(--dirt-white);
+  border-radius: 12px;
+  padding: 16px 16px 16px 36px;
+  transition: border-color 0.15s ease-in-out;
+  color: var(--main-black);
+}
+
+.location-field::placeholder {
+  color: var(--dark-gray);
+}
+
+.location-field:hover {
+  border-color: var(--red-hover);
+}
+.location-field:focus {
+  border-color: var(--red);
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+}
+
+/* .location-field:not(:active) + .icon use, */
+.location-field:not(:focus) + .icon use {
+  fill: var(--dark-gray);
+}
+
+.location-field:placeholder-shown + .icon use {
+  fill: var(--dark-gray);
+}
+
+.location-field:not(:placeholder-shown) + .icon use {
+  fill: var(--main-black);
+}
+
+.error {
+  color: var(--red);
+}
+.field {
+  margin-top: 32px;
+}
+.filters-text {
+  color: var(--dark-blue);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0;
+
+  margin-top: 40px;
+}
+
+.filters-name {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.filters-group {
+  padding-top: 24px;
+  border-top: 1px solid var(--light-gray);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 12px;
+  row-gap: 8px;
+  margin-top: 24px;
 }
