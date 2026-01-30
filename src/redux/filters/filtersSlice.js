@@ -26,15 +26,20 @@ export const selectFilters = state => state.filters;
 export const selectFilteredTrucks = createSelector(
   [selectCampers, selectLocationFilter, selectFormFilter, selectFeaturesFilter],
   (campers, locationFilter, formFilter, featuresFilter) => {
+    if (!Array.isArray(campers)) return [];
+    
     const searchLocation = locationFilter.toLowerCase();
 
-    return campers.filter(({ location, form, transmission, ...features }) => {
-      const matchesLocation = location.toLowerCase().includes(searchLocation);
-      const matchesForm = !formFilter || form === formFilter;
-
+    return campers.filter(camper => {
+      const matchesLocation = camper.location
+        .toLowerCase()
+        .includes(searchLocation.trim().toLowerCase());
+      const matchesForm = !formFilter || camper.form === formFilter;
       const matchesFeatures = featuresFilter.every(feature => {
-        if (feature === 'automatic') return transmission === 'automatic';
-        return !!features[feature];
+        if (feature === 'transmission') {
+          return camper.transmission === 'automatic';
+        }
+        return Boolean(camper[feature]);
       });
 
       return matchesLocation && matchesForm && matchesFeatures;

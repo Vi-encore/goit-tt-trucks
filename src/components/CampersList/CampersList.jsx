@@ -15,7 +15,7 @@ export default function CampersList() {
   const campers = useSelector(selectFilteredTrucks);
   const [page, setPage] = useState(1);
   const itemsPerPage = 4;
-  const visibleCampers = campers.slice(0, page * itemsPerPage);
+  const visibleCampers = campers.slice(0, page * itemsPerPage) || [];
   const hasMore = visibleCampers.length < campers.length;
 
   function handleLoadMore() {

@@ -23,8 +23,8 @@
   color: var(--main-black);
   font-weight: 500;
   font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0%;
+  line-height: 1.2;
+  letter-spacing: 0;
   text-align: center;
   /* check if everything is really necessary  */
 
