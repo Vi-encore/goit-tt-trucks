@@ -3,10 +3,15 @@ import css from './CamperPage.module.css';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchCamperById } from '../../redux/campers/campersOps';
-import { clearCamper, selectCamper } from '../../redux/campers/campersSlice';
+import {
+  clearCamper,
+  selectCamper,
+  selectError,
+} from '../../redux/campers/campersSlice';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import Loader from '../../components/Loader/Loader';
 import ImageWithLoader from '../../components/ImageWithLoader/imageWithLoader';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 const navLinks = [
   {
@@ -31,8 +36,12 @@ export default function CamperPage() {
   }, [dispatch, id]);
 
   const camper = useSelector(selectCamper);
-  if (!camper) return <Loader />; // prevent errors by this
+  const error = useSelector(selectError);
+  if (error) {
+    return <NotFoundPage />;
+  }
 
+  if (!camper) return <Loader />;
   const { name, rating, location, price, reviews, gallery, description } =
     camper;
 
