@@ -1,16 +1,65 @@
-# React + Vite
+# 🚚 goit-tt-trucks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Коротко:** React + Vite застосунок для каталогу й бронювання кемперів (або
+вантажних авто). Містить фільтри, сторінки товарів, форму бронювання та
+збереження у фаворити.
 
-Currently, two official plugins are available:
+## ✨ Основні можливості
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Пошук та фільтрація кемперів (типи, опції, рейтинг)
+- Сторінка кемпера з детальною інформацією та відгуками
+- Форма бронювання з валідацією (Formik + Yup)
+- Збереження фаворитів через Redux + redux-persist
+- Повідомлення та тости (react-toastify), лоадери та спінери
 
-## React Compiler
+## 🛠 Технології
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Фреймворк:** React 19
+- **Бандлер:** Vite
+- **Стан:** Redux Toolkit, react-redux, redux-persist
+- **HTTP:** axios
+- **Форми/Валідація:** Formik, Yup
+- **Роутинг:** react-router-dom
+- UI: react-spinners, react-datepicker, react-toastify
+- Лінтер: ESLint
 
-## Expanding the ESLint configuration
+## 🚀 Запуск локально
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Встановити залежності:
+   ```bash
+   npm install
+   ```
+2. Запустити дев-сервер:
+   ```bash
+   npm run dev
+   ```
+3. Побудувати продакшн:
+   ```bash
+   npm run build
+   ```
+4. Попередній перегляд збірки:
+   ```bash
+   npm run preview
+   ```
+
+## 📂 Структура проєкту (коротко)
+
+- `src/components/` — UI-компоненти (CamperCard, BookingForm, FiltersForm тощо)
+- `src/pages/` — сторінки (Home, Catalog, Camper, NotFound)
+- `src/redux/` — стан (campers, favorites, filters)
+- `src/data/` — статичні дані та опції
+
+## ⚠️ Нотатки
+
+- Перевірте налаштування API/ендпойнти у відповідних файлах `campersOps.js`
+  (якщо використовуються зовн. сервіси).
+- Локальний стан фаворитів зберігається через `redux-persist`.
+
+## 🤝 Внесок
+
+- Fork → branch → PR. Додайте короткий опис змін у PR і пройдіть lint/тести
+  перед мерджем.
+
+## 📄 Ліцензія
+
+- Додайте свою ліцензію (наприклад, MIT) або вкажіть іншу за потреби.
