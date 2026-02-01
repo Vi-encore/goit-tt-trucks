@@ -109,7 +109,7 @@ export default function BookingForm() {
                     setFieldValue('dateRange', { start, end });
                   }}
                   onBlur={() => setFieldTouched('dateRange', true)}
-                  autoComplete="false"
+                  autoComplete="off"
                   selectsRange
                   minDate={new Date()}
                   locale="en-GB"

@@ -12,10 +12,10 @@ export default function CamperReviews() {
 
   return (
     <div className={css.container}>
-      {reviews.map(review => {
+      {reviews.map((review, index) => {
         return (
           <div
-            key={review.reviewer_name.charAt(0)}
+            key={`${review.reviewer_name}-${index}`}
             className={css['review-wrap']}
           >
             <div className={css['review-head']}>

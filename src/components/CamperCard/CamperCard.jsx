@@ -27,7 +27,16 @@ export default function CamperCard({ camper }) {
         <div className={css.header}>
           <h2>{name}</h2>
           <p>€{price.toFixed(2)}</p>
-          <button className={css['favorites-btn']} onClick={handleAddFavorite}>
+          <button
+            className={css['favorites-btn']}
+            onClick={handleAddFavorite}
+            aria-pressed={favorites.includes(id)}
+            aria-label={
+              favorites.includes(id)
+                ? 'Remove from favorites'
+                : 'Add to favorites'
+            }
+          >
             <svg width="26" height="24" className={css['favorites-icon']}>
               {favorites.includes(id) ? (
                 <use href="/icons.svg#icon-heart-selected" />
@@ -63,4 +72,3 @@ export default function CamperCard({ camper }) {
   );
 }
 
-// star fill in css ???

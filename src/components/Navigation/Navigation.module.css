@@ -1,15 +1,11 @@
 .nav-container {
   width: 100vw;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   padding: 24px 64px;
   background-color: var(--dirt-white);
-
-  
 }
 
 .nav {
@@ -24,10 +20,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.2;
-  letter-spacing: 0;
   text-align: center;
-  /* check if everything is really necessary  */
-
   transition: color 0.15s ease-in-out;
 }
 

@@ -9,7 +9,7 @@ export default function StarsReview({ rating }) {
         const isSelected = starValue <= rating;
 
         return (
-          <svg width="16" height="16" key={starValue}>
+          <svg width="16" height="16" key={starValue} aria-hidden="true">
             <use
               href={`/icons.svg#icon-star${isSelected ? '-selected' : ''}`}
             />
