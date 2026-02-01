@@ -1,11 +1,11 @@
 import css from './CamperCard.module.css';
-import CamperFeatures from '../CamperFeatures/CamperFeatures';
 import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFavorites,
   toggleFavorite,
 } from '../../redux/favorites/favoritesSlice';
+import CamperBadge from '../CamperBadge/CamperBadge';
 
 export default function CamperCard({ camper }) {
   const { id, name, price, rating, reviews, location, description, gallery } =
@@ -56,7 +56,7 @@ export default function CamperCard({ camper }) {
         <div className={css.description}>
           <p>{description}</p>
         </div>
-        <CamperFeatures camper={camper} />
+        <CamperBadge camper={camper} />
         <Button to={`/catalog/${id}`} text="Show More" />
       </div>
     </li>

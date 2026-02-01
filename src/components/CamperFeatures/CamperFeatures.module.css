@@ -1,21 +1,38 @@
 .container {
+  width: 50%;
+  padding: 44px 52px;
+  background-color: var(--dirt-white);
+  border-radius: 10px;
+
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  gap: 8px;
-
-  margin-bottom: 24px;
+  flex-direction: column;
+  gap: 100px;
 }
 
-.feature-container {
-  background-color: var(--lighter-gray);
-  padding: 12px 16px;
-  border-radius: 25px;
+.wrap h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
 
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.details-wrap {
+  margin-top: 24px;
+}
+
+.detail {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+}
+
+.detail p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
 }

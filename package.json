@@ -15,10 +15,12 @@
     "formik": "^2.4.9",
     "modern-normalize": "^3.0.1",
     "react": "^19.2.0",
+    "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.0",
     "react-spinners": "^0.17.0",
+    "react-toastify": "^11.0.5",
     "redux-persist": "^6.0.0",
     "reset-css": "^5.0.2",
     "yup": "^1.7.1"

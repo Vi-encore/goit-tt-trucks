@@ -1,0 +1,210 @@
+.customRoot {
+  position: relative;
+}
+
+.customRoot :global(.react-datepicker__day) {
+  transition: background-color 0.2s;
+}
+
+.customRoot :global(.react-datepicker__day:focus),
+.customRoot :global(.react-datepicker__day--keyboard-selected) {
+  outline: none !important;
+  background-color: var(--dark-blue) !important;
+  color: var(--white) !important;
+  border-radius: 4px !important;
+}
+
+.customRoot :global(.react-datepicker__day--selected),
+.customRoot :global(.react-datepicker__day--range-start),
+.customRoot :global(.react-datepicker__day--range-end) {
+  background-color: var(--dark-blue) !important;
+  color: var(--white) !important;
+  opacity: 1 !important;
+}
+
+.customRoot :global(.react-datepicker__day--in-range) {
+  background-color: var(--light-gray) !important;
+  color: var(--dark-blue) !important;
+  border-radius: 4px !important;
+}
+
+.customRoot :global(.react-datepicker__day--range-start) {
+  background-color: var(--dark-blue) !important;
+  color: var(--white) !important;
+  border-radius: 50% 0 0 50% !important;
+}
+
+.customRoot :global(.react-datepicker__day--range-end) {
+  background-color: var(--dark-blue) !important;
+  color: var(--white) !important;
+  border-radius: 0 50% 50% 0 !important;
+}
+
+.customRoot
+  :global(
+    .react-datepicker__day--range-start.react-datepicker__day--range-end
+  ) {
+  background-color: var(--dark-blue) !important;
+  color: var(--white);
+  border-radius: 50% !important;
+}
+
+/* 4. Ховер ефекти */
+.customRoot :global(.react-datepicker__day:hover) {
+  background-color: var(--dark-gray) !important;
+  color: var(--white) !important;
+}
+
+.customRoot :global(.react-datepicker__day--in-range:hover) {
+  background-color: var(--dark-gray) !important;
+}
+
+.customRoot :global(.react-datepicker__day--outside-month) {
+  color: var(--dark-gray) !important;
+  opacity: 0.4;
+}
+
+.customRoot :global(.react-datepicker__day--in-selecting-range) {
+  background-color: var(--light-gray) !important;
+  border-radius: 0 !important;
+}
+
+/* Actual styles */
+
+.container {
+  width: 50%;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 44px 57px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.header-wrap h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.header-wrap p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+
+  color: var(--dark-gray);
+}
+
+.form-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  flex: 1;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.form-wrap > .form-item-wrap:has(textarea) {
+  flex: 1; /* Цей конкретний wrapper розтягнеться */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item-wrap {
+  width: 100%;
+}
+
+.form-item {
+  width: 100%;
+  background-color: var(--dirt-white);
+  padding: 18px 16px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--main-black);
+}
+
+.form-item::placeholder {
+  color: var(--dark-gray);
+}
+
+.form-item:focus {
+  border-color: var(--red);
+}
+
+.form-item:hover {
+  border-color: var(--red-hover);
+}
+
+.form-item:-webkit-autofill,
+.form-item:-webkit-autofill:hover, 
+.form-item:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--main-black); /* Колір тексту при автозаповненні */
+  -webkit-box-shadow: 0 0 0px 1000px var(--dirt-white) inset; /* Колір фону */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-item[name='comment'] {
+  resize: none;
+  margin-bottom: 10px;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto; 
+  scrollbar-width: thin; 
+  scrollbar-color: var(--light-gray) transparent; 
+}
+
+.form-item[name='comment']::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-item[name='comment']::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.form-item[name='comment']::-webkit-scrollbar-thumb {
+  background-color: var(--light-gray); 
+  border-radius: 20px; 
+  border: 1px solid transparent; 
+}
+
+.form-item[name='comment']::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dark-gray); 
+}
+
+button[type='submit'] {
+  flex-shrink: 0; 
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.required {
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.required-border {
+  border: 1px solid var(--red);
+}

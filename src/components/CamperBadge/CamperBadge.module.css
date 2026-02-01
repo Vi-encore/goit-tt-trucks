@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 24px;
+}
+
+.feature-container {
+  background-color: var(--lighter-gray);
+  padding: 12px 16px;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
