@@ -50,7 +50,7 @@ export default function CampersList() {
       {campers.length === 0 && (
         <div className={css['not-found-wrap']}>
           <p className={css['not-found']}>No matching campers found!</p>
-          <Button onClick={handleReset} text="Reset filters" />
+          <SecondaryButton onClick={handleReset} text="Reset filters" />
         </div>
       )}
       {isLoading && <Loader />}
