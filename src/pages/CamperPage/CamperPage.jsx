@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { fetchCamperById } from '../../redux/campers/campersOps';
 import { selectCamper } from '../../redux/campers/campersSlice';
 import BookingForm from '../../components/BookingForm/BookingForm';
+import Loader from '../../components/Loader/Loader';
 
 const navLinks = [
   {
@@ -26,7 +27,7 @@ export default function CamperPage() {
   }, [dispatch, id]);
 
   const camper = useSelector(selectCamper);
-  if (!camper) return <p>Loading</p>; // prevent errors by this
+  if (!camper) return <Loader />; // prevent errors by this
 
   const { name, rating, location, price, reviews, gallery, description } =
     camper;
@@ -86,8 +87,7 @@ export default function CamperPage() {
         })}
       </ul>
       <div className={css['info-form-container']}>
-        
-          <Outlet context={camper} />
+        <Outlet context={camper} />
         <BookingForm />
       </div>
     </div>

@@ -2,10 +2,11 @@ import { useSelector } from 'react-redux';
 import css from './CamperReviews.module.css';
 import { selectCamper } from '../../redux/campers/campersSlice';
 import StarsReview from '../StarsReview/StarsReview';
+import Loader from '../Loader/Loader';
 
 export default function CamperReviews() {
   const camper = useSelector(selectCamper);
-  if (!camper) return <p>Loading...</p>;
+  if (!camper) return <Loader />;
 
   const { reviews } = camper;
 

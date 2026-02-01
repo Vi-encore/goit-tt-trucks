@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './CampersList.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchCampers } from '../../redux/campers/campersOps';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import { selectFilteredTrucks } from '../../redux/filters/filtersSlice';
 
 export default function CampersList() {
+  const loadMoreBtnRef = useRef(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +23,15 @@ export default function CampersList() {
     setPage(prevPage => prevPage + 1);
   }
 
+  useEffect(() => {
+    if (page > 1) { 
+      loadMoreBtnRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [visibleCampers.length, page]);
+
   return (
     <div className={css.container}>
       <ul className={css.list}>
@@ -31,7 +41,12 @@ export default function CampersList() {
           })}
       </ul>
       {hasMore && (
-        <button type="button" onClick={handleLoadMore} className={css['show-more-btn']}>
+        <button
+          type="button"
+          onClick={handleLoadMore}
+          ref={loadMoreBtnRef}
+          className={css['show-more-btn']}
+        >
           Load More
         </button>
       )}

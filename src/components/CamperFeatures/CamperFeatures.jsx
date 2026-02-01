@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import css from './CamperFeatures.module.css';
 import { selectCamper } from '../../redux/campers/campersSlice';
 import CamperBadge from '../CamperBadge/CamperBadge';
+import Loader from '../Loader/Loader';
 
 function capitalizeFirstLetter(str) {
   if (!str) return '';
@@ -10,7 +11,7 @@ function capitalizeFirstLetter(str) {
 
 export default function CamperInfo() {
   const camper = useSelector(selectCamper);
-  if (!camper) return <p>Loading</p>;
+  if (!camper) return <Loader />;
 
   return (
     <div className={css.container}>

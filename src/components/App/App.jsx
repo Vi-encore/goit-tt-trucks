@@ -2,9 +2,9 @@ import './App.module.css';
 
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MoonLoader } from 'react-spinners';
 import Navigation from '../Navigation/Navigation';
 import { ToastContainer } from 'react-toastify';
+import Loader from '../Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
@@ -22,15 +22,7 @@ function App() {
   return (
     <>
       <Navigation />
-      <Suspense
-        fallback={
-          <MoonLoader
-            color="#d15065"
-            cssOverride={{ margin: '20px 0' }}
-            size="80px"
-          />
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route element={<HomePage />} path="/" />
           <Route element={<CatalogPage />} path="/catalog" />

@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import css from './CatalogPage.module.css';
-import { MoonLoader } from 'react-spinners';
 import FiltersForm from '../../components/FiltersForm/FiltersForm';
 import CampersList from '../../components/CampersList/CampersList';
 import { selectLoading } from '../../redux/campers/campersSlice';
+import Loader from '../../components/Loader/Loader';
 
 export default function CatalogPage() {
   const isLoading = useSelector(selectLoading);
@@ -11,11 +11,7 @@ export default function CatalogPage() {
   return (
     <div className={css.container}>
       {isLoading && (
-        <MoonLoader
-          color="#d15065"
-          cssOverride={{ margin: '20px 0' }}
-          size="80px"
-        />
+        <Loader />
       )}
       <FiltersForm />
       <CampersList />
