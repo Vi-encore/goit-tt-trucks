@@ -4,17 +4,19 @@ import { useEffect, useRef, useState } from 'react';
 import { fetchCampers } from '../../redux/campers/campersOps';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import { selectFilteredTrucks } from '../../redux/filters/filtersSlice';
+import Loader from '../Loader/Loader';
 
 export default function CampersList() {
   const loadMoreBtnRef = useRef(null);
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
   const campers = useSelector(selectFilteredTrucks);
-  const [page, setPage] = useState(1);
+
   const itemsPerPage = 4;
   const visibleCampers = campers.slice(0, page * itemsPerPage) || [];
   const hasMore = visibleCampers.length < campers.length;
@@ -24,13 +26,16 @@ export default function CampersList() {
   }
 
   useEffect(() => {
-    if (page > 1) { 
+    if (page > 1) {
       loadMoreBtnRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       });
     }
   }, [visibleCampers.length, page]);
+
+  
+  if (campers.length === 0) return <p>No Items found.</p>;
 
   return (
     <div className={css.container}>

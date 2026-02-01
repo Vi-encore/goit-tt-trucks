@@ -18,7 +18,7 @@ export default function FiltersForm() {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    changeFilters({ location: '', form: '', features: [] });
+    dispatch(changeFilters({ location: '', form: '', features: [] }));
   }, [dispatch]);
 
   return (
@@ -26,16 +26,16 @@ export default function FiltersForm() {
       <Formik
         enableReinitialize={true}
         initialValues={{
-          location: filters.location || '',
-          form: filters.form || '',
-          features: filters.features || [],
+          location: filters.location ?? '',
+          form: filters.form ?? '',
+          features: filters.features ?? [],
         }}
         validationSchema={LocationSchema}
         onSubmit={values => {
           dispatch(changeFilters(values));
         }}
       >
-        {errors => {
+        {({ errors }) => {
           return (
             <Form className={css.form}>
               <div className={css['location-container']}>
@@ -86,6 +86,7 @@ export default function FiltersForm() {
                           feature={type}
                           key={type.value}
                           name="form"
+                          id="form"
                           type="radio"
                         />
                       );

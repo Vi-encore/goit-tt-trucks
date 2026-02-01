@@ -20,7 +20,7 @@ const camperSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload.items;
+        state.items = state.items = action.payload.items || action.payload;
       })
       .addCase(fetchCamperById.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)

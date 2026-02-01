@@ -1,7 +1,5 @@
 .container {
   width: 100%;
-  /* height: 368px; */
-
   border: 1px solid var(--light-gray);
 
   border-radius: 16px;
@@ -93,6 +91,7 @@
 .description p {
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
