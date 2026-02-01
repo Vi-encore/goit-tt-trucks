@@ -14,7 +14,7 @@ const LocationSchema = Yup.object().shape({
   location: Yup.string(),
 });
 
-export default function FiltersForm() {
+export default function FiltersForm({ resetPage }) {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
 
@@ -24,6 +24,11 @@ export default function FiltersForm() {
 
   function handleResetFilters() {
     dispatch(changeFilters({ location: '', form: '', features: [] }));
+  }
+
+  function handleSubmit(values) {
+    dispatch(changeFilters(values));
+    resetPage();
   }
 
   return (
@@ -36,9 +41,7 @@ export default function FiltersForm() {
           features: filters.features ?? [],
         }}
         validationSchema={LocationSchema}
-        onSubmit={values => {
-          dispatch(changeFilters(values));
-        }}
+        onSubmit={handleSubmit}
       >
         {({ errors, resetForm }) => {
           return (
@@ -101,11 +104,11 @@ export default function FiltersForm() {
               </div>
               <div className={css.buttons}>
                 <Button text="Search" />
-                <SecondaryButton 
+                <SecondaryButton
                   text="Reset Filters"
                   onClick={() => {
                     handleResetFilters();
-                    resetForm()
+                    resetForm();
                   }}
                 />
               </div>

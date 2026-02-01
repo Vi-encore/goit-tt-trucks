@@ -4,14 +4,13 @@ import FiltersForm from '../../components/FiltersForm/FiltersForm';
 import CampersList from '../../components/CampersList/CampersList';
 import { selectError, selectLoading } from '../../redux/campers/campersSlice';
 import Loader from '../../components/Loader/Loader';
-import { selectFilters } from '../../redux/filters/filtersSlice';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import { useState } from 'react';
 
 export default function CatalogPage() {
   const isLoading = useSelector(selectLoading);
-  const filters = useSelector(selectFilters);
-  const filterKey = JSON.stringify(filters);
   const error = useSelector(selectError);
+  const [page, setPage] = useState(1);
 
   return (
     <>
@@ -20,8 +19,8 @@ export default function CatalogPage() {
       ) : (
         <div className={css.container}>
           {isLoading && <Loader />}
-          <FiltersForm />
-          <CampersList key={filterKey} />
+          <FiltersForm resetPage={()=>setPage(1)}/>
+          <CampersList page={page} setPage={setPage} />
         </div>
       )}
     </>

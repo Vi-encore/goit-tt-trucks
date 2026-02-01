@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './CampersList.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { fetchCampers } from '../../redux/campers/campersOps';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import {
@@ -10,10 +10,9 @@ import {
 import SecondaryButton from '../SecondaryButton/SecondaryButton';
 import { selectError } from '../../redux/campers/campersSlice';
 
-export default function CampersList() {
+export default function CampersList({ page, setPage }) {
   const listEndRef = useRef(null);
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
   const campers = useSelector(selectFilteredTrucks);
 
   const itemsPerPage = 4;
