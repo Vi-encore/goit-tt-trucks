@@ -46,36 +46,4 @@ export const selectFilteredTrucks = createSelector(
     });
   }
 );
-// export const selectFilteredTrucks = createSelector(
-//   [selectCampers, selectLocationFilter, selectFormFilter, selectFeaturesFilter],
-//   (campers, locationFilter, formFilter, featuresFilter) => {
-//     // Якщо campers — це об'єкт, беремо з нього масив items
-//     const data = Array.isArray(campers) ? campers : campers?.items || [];
 
-//     if (data.length === 0) return [];
-
-//     const searchLocation = locationFilter.toLowerCase().trim();
-
-//     return data.filter(camper => {
-//       // 1. Фільтр по локації
-//       const matchesLocation = camper.location
-//         .toLowerCase()
-//         .includes(searchLocation);
-
-//       // 2. Фільтр по типу кузова (form)
-//       const matchesForm = !formFilter || camper.form === formFilter;
-
-//       // 3. Фільтр по зручностях
-//       const matchesFeatures = featuresFilter.every(feature => {
-//         if (feature === 'transmission') {
-//           return camper.transmission === 'automatic';
-//         }
-//         // Перевіряємо наявність властивості в об'єкті кемпера
-//         return !!camper[feature];
-//       });
-
-//       return matchesLocation && matchesForm && matchesFeatures;
-//     });
-//   }
-// );
-//??

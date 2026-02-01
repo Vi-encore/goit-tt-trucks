@@ -7,6 +7,8 @@
   width: 100%;
 }
 
+
+
 .form > div:last-of-type {
   margin-bottom: 40px;
 }
@@ -68,6 +70,15 @@
 .location-field:not(:placeholder-shown) + .icon use {
   fill: var(--main-black);
 }
+
+.location-field:-webkit-autofill,
+.location-field:-webkit-autofill:hover, 
+.location-field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--main-black); 
+  -webkit-box-shadow: 0 0 0px 1000px var(--dirt-white) inset; 
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 
 .error {
   color: var(--red);

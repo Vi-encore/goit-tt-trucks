@@ -3,11 +3,17 @@ import css from './CampersList.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { fetchCampers } from '../../redux/campers/campersOps';
 import CamperCard from '../../components/CamperCard/CamperCard';
-import { selectFilteredTrucks } from '../../redux/filters/filtersSlice';
+import {
+  changeFilters,
+  selectFilteredTrucks,
+} from '../../redux/filters/filtersSlice';
 import Loader from '../Loader/Loader';
+import Button from '../Button/Button';
+import { selectLoading } from '../../redux/campers/campersSlice';
 
 export default function CampersList() {
   const loadMoreBtnRef = useRef(null);
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
@@ -25,6 +31,10 @@ export default function CampersList() {
     setPage(prevPage => prevPage + 1);
   }
 
+  function handleReset() {
+    dispatch(changeFilters({ location: '', form: '', features: [] }));
+  }
+
   useEffect(() => {
     if (page > 1) {
       loadMoreBtnRef.current?.scrollIntoView({
@@ -34,11 +44,15 @@ export default function CampersList() {
     }
   }, [visibleCampers.length, page]);
 
-  
-  if (campers.length === 0) return <p>No Items found.</p>;
-
   return (
     <div className={css.container}>
+      {campers.length === 0 && (
+        <div className={css['not-found-wrap']}>
+          <p className={css['not-found']}>No matching campers found!</p>
+          <Button onClick={handleReset} text="Reset filters" />
+        </div>
+      )}
+      {isLoading && <Loader />}
       <ul className={css.list}>
         {visibleCampers.length > 0 &&
           visibleCampers.map(camper => {

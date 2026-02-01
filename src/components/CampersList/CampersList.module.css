@@ -30,10 +30,22 @@
   color: var(--main-black);
   border-radius: 25px;
 
-  transition: border-color .15s ease-in-out;
+  transition: border-color 0.15s ease-in-out;
 }
 
 .show-more-btn:hover {
   border-color: var(--red-hover);
-
 }
+
+.not-found-wrap {
+  text-align: center;
+}
+
+.not-found {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--dark-blue);
+  margin-bottom: 20px;
+}
+
