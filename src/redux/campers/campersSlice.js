@@ -13,6 +13,11 @@ const handleRejected = (state, action) => {
 const camperSlice = createSlice({
   name: 'campers',
   initialState: { items: [], loading: false, error: null, camper: null },
+  reducers: {
+    clearCamper(state) {
+      state.camper = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.rejected, handleRejected)
@@ -33,6 +38,7 @@ const camperSlice = createSlice({
 });
 
 export const campersSliceReducer = camperSlice.reducer;
+export const { clearCamper } = camperSlice.actions; 
 
 // selectors
 export const selectCampers = state => state.campers.items;

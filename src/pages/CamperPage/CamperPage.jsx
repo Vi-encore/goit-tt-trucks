@@ -3,7 +3,7 @@ import css from './CamperPage.module.css';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchCamperById } from '../../redux/campers/campersOps';
-import { selectCamper } from '../../redux/campers/campersSlice';
+import { clearCamper, selectCamper } from '../../redux/campers/campersSlice';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import Loader from '../../components/Loader/Loader';
 import ImageWithLoader from '../../components/ImageWithLoader/imageWithLoader';
@@ -26,6 +26,8 @@ export default function CamperPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchCamperById(id));
+
+    return () => dispatch(clearCamper());
   }, [dispatch, id]);
 
   const camper = useSelector(selectCamper);
