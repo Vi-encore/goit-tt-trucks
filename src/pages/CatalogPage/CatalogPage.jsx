@@ -11,6 +11,7 @@ export default function CatalogPage() {
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const [page, setPage] = useState(1);
+  const [isFiltering, setIsFiltering] = useState(false);
 
   return (
     <>
@@ -19,8 +20,16 @@ export default function CatalogPage() {
       ) : (
         <div className={css.container}>
           {isLoading && <Loader />}
-          <FiltersForm resetPage={()=>setPage(1)}/>
-          <CampersList page={page} setPage={setPage} />
+          <FiltersForm
+            resetPage={() => setPage(1)}
+            setIsFiltering={setIsFiltering}
+          />
+          <CampersList
+            page={page}
+            setPage={setPage}
+            isFiltering={isFiltering}
+            setIsFiltering={setIsFiltering}
+          />
         </div>
       )}
     </>

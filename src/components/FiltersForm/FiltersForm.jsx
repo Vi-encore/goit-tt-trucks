@@ -14,7 +14,7 @@ const LocationSchema = Yup.object().shape({
   location: Yup.string(),
 });
 
-export default function FiltersForm({ resetPage }) {
+export default function FiltersForm({ resetPage, setIsFiltering }) {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
 
@@ -23,12 +23,32 @@ export default function FiltersForm({ resetPage }) {
   }, [dispatch]);
 
   function handleResetFilters() {
-    dispatch(changeFilters({ location: '', form: '', features: [] }));
+    const isAnyFilterActive =
+      filters.location !== '' ||
+      filters.form !== '' ||
+      filters.features.length > 0;
+
+    if (isAnyFilterActive) {
+      setIsFiltering(true);
+      dispatch(changeFilters({ location: '', form: '', features: [] }));
+      resetPage();
+
+      setTimeout(() => {
+        setIsFiltering(false);
+      }, 500);
+    } else {
+      dispatch(changeFilters({ location: '', form: '', features: [] }));
+    }
   }
 
   function handleSubmit(values) {
     dispatch(changeFilters(values));
+    setIsFiltering(true);
     resetPage();
+
+    setTimeout(() => {
+      setIsFiltering(false);
+    }, 500);
   }
 
   return (

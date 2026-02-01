@@ -5,7 +5,6 @@ export default function Loader() {
   return <div className={css.container}>
     <PuffLoader
           color="#e44848"
-          // cssOverride={{ margin: '20px 0' }}
           size="150px"
           className={css.loader}
         />
