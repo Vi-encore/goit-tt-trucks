@@ -79,6 +79,7 @@
   min-height: 600px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .header-wrap {

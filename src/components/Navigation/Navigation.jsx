@@ -2,7 +2,6 @@ import css from './Navigation.module.css';
 
 import { NavLink } from 'react-router-dom';
 
-// const spritePath = '/icons.svg';
 
 const navLinks = [
   { to: '/', label: 'Home' },
