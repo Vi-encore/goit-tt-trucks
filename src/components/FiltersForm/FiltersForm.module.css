@@ -110,3 +110,11 @@
   row-gap: 8px;
   margin-top: 24px;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}

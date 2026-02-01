@@ -10,6 +10,7 @@ import {
 import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import { selectLoading } from '../../redux/campers/campersSlice';
+import SecondaryButton from '../SecondaryButton/SecondaryButton';
 
 export default function CampersList() {
   const loadMoreBtnRef = useRef(null);
@@ -60,14 +61,11 @@ export default function CampersList() {
           })}
       </ul>
       {hasMore && (
-        <button
-          type="button"
+        <SecondaryButton
           onClick={handleLoadMore}
           ref={loadMoreBtnRef}
-          className={css['show-more-btn']}
-        >
-          Load More
-        </button>
+          text="Load More"
+        />
       )}
     </div>
   );

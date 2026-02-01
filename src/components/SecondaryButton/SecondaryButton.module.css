@@ -1,0 +1,21 @@
+.btn {
+  padding: 16px 32px;
+  display: block;
+  width: fit-content;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.1px;
+
+  background-color: transparent;
+  border: 1px solid var(--light-gray);
+  color: var(--main-black);
+  border-radius: 25px;
+
+  transition: border-color 0.15s ease-in-out;
+}
+
+.btn:hover {
+  border-color: var(--red-hover);
+}

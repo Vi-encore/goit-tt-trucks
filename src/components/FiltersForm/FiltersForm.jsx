@@ -8,6 +8,7 @@ import { featuresOptions } from '../../data/featuresOptions';
 import FilterCard from '../FilterCard/FilterCard';
 import { vehicleTypes } from '../../data/vehicleTypes';
 import Button from '../Button/Button';
+import SecondaryButton from '../SecondaryButton/SecondaryButton';
 
 const LocationSchema = Yup.object().shape({
   location: Yup.string(),
@@ -20,6 +21,10 @@ export default function FiltersForm() {
   useEffect(() => {
     dispatch(changeFilters({ location: '', form: '', features: [] }));
   }, [dispatch]);
+
+  function handleResetFilters() {
+    dispatch(changeFilters({ location: '', form: '', features: [] }));
+  }
 
   return (
     <div className={css.container}>
@@ -35,7 +40,7 @@ export default function FiltersForm() {
           dispatch(changeFilters(values));
         }}
       >
-        {({ errors }) => {
+        {({ errors, resetForm }) => {
           return (
             <Form className={css.form}>
               <div className={css['location-container']}>
@@ -94,7 +99,16 @@ export default function FiltersForm() {
                   </div>
                 </fieldset>
               </div>
-              <Button text="Search" />
+              <div className={css.buttons}>
+                <Button text="Search" />
+                <SecondaryButton 
+                  text="Reset Filters"
+                  onClick={() => {
+                    handleResetFilters();
+                    resetForm()
+                  }}
+                />
+              </div>
             </Form>
           );
         }}
