@@ -23,6 +23,7 @@ export default function CamperPage() {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 

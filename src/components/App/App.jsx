@@ -5,7 +5,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import { ToastContainer } from 'react-toastify';
 import Loader from '../Loader/Loader';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
@@ -22,7 +21,6 @@ const CamperReviews = lazy(() => import('../CamperReviews/CamperReviews'));
 function App() {
   return (
     <>
-      <ScrollToTop />
       <Navigation />
       <Suspense fallback={<Loader />}>
         <Routes>
