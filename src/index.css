@@ -24,9 +24,6 @@
   --white: #ffffff;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
 
 #root {
   display: flex;
