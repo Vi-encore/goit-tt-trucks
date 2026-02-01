@@ -6,6 +6,7 @@ import { fetchCamperById } from '../../redux/campers/campersOps';
 import { selectCamper } from '../../redux/campers/campersSlice';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import Loader from '../../components/Loader/Loader';
+import ImageWithLoader from '../../components/ImageWithLoader/imageWithLoader';
 
 const navLinks = [
   {
@@ -60,7 +61,7 @@ export default function CamperPage() {
           {gallery.map(image => {
             return (
               <li key={image.thumb} className={css['gallery-item']}>
-                <img src={image.thumb} alt={name} />
+                <ImageWithLoader src={image.thumb} alt={name} />
               </li>
             );
           })}

@@ -6,6 +6,7 @@ import {
   toggleFavorite,
 } from '../../redux/favorites/favoritesSlice';
 import CamperBadge from '../CamperBadge/CamperBadge';
+import ImageWithLoader from '../ImageWithLoader/imageWithLoader';
 
 export default function CamperCard({ camper }) {
   const { id, name, price, rating, reviews, location, description, gallery } =
@@ -21,7 +22,9 @@ export default function CamperCard({ camper }) {
   return (
     <li className={css.container}>
       <div className={css['img-container']}>
-        {gallery?.[0]?.thumb && <img src={gallery[0].thumb} alt={name} />}
+        {gallery?.[0]?.thumb && (
+          <ImageWithLoader src={gallery[0].thumb} alt={name} />
+        )}
       </div>
       <div>
         <div className={css.header}>
@@ -71,4 +74,3 @@ export default function CamperCard({ camper }) {
     </li>
   );
 }
-
