@@ -7,21 +7,12 @@ import {
   changeFilters,
   selectFilteredTrucks,
 } from '../../redux/filters/filtersSlice';
-import Loader from '../Loader/Loader';
-import Button from '../Button/Button';
-import { selectLoading } from '../../redux/campers/campersSlice';
 import SecondaryButton from '../SecondaryButton/SecondaryButton';
 
 export default function CampersList() {
-  const loadMoreBtnRef = useRef(null);
-  const isLoading = useSelector(selectLoading);
+  const listEndRef = useRef(null);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
-
   const campers = useSelector(selectFilteredTrucks);
 
   const itemsPerPage = 4;
@@ -33,12 +24,17 @@ export default function CampersList() {
   }
 
   function handleReset() {
+    window.scrollTo(0, 0);
     dispatch(changeFilters({ location: '', form: '', features: [] }));
   }
 
   useEffect(() => {
+    dispatch(fetchCampers());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (page > 1) {
-      loadMoreBtnRef.current?.scrollIntoView({
+      listEndRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       });
@@ -53,22 +49,15 @@ export default function CampersList() {
           <SecondaryButton onClick={handleReset} text="Reset filters" />
         </div>
       )}
-      {isLoading && <Loader />}
+
       <ul className={css.list}>
         {visibleCampers.length > 0 &&
           visibleCampers.map(camper => {
             return <CamperCard camper={camper} key={camper.id} />;
           })}
       </ul>
-      {hasMore && (
-        <SecondaryButton
-          onClick={handleLoadMore}
-          ref={loadMoreBtnRef}
-          text="Load More"
-        />
-      )}
+      <div className={css['scroll-marker']} ref={listEndRef}></div>
+      {hasMore && <SecondaryButton onClick={handleLoadMore} text="Load More" />}
     </div>
   );
 }
-
-//add loading +suspense+outlet etc
