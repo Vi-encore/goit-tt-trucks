@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   dateRange: Yup.object({
     start: Yup.date().nullable().required('Please select a start date'),
     end: Yup.date().nullable().required('Please select an end date'),
-  }),
+  }).required('Booking date is required'),
 });
 
 const initialValues = {
@@ -64,7 +64,7 @@ export default function BookingForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, values, setFieldValue }) => {
+        {({ errors, touched, values, setFieldValue, setFieldTouched }) => {
           return (
             <Form className={css['form-wrap']}>
               <div className={css['form-item-wrap']}>
@@ -108,6 +108,7 @@ export default function BookingForm() {
                     const [start, end] = dates;
                     setFieldValue('dateRange', { start, end });
                   }}
+                  onBlur={() => setFieldTouched('dateRange', true)}
                   autoComplete="false"
                   selectsRange
                   minDate={new Date()}
@@ -124,12 +125,12 @@ export default function BookingForm() {
                   }
                   wrapperClassName={css.fullWidth}
                 />
-                {touched.dateRange?.start && errors.dateRange?.start && (
-                  <div className={css.required}>{errors.dateRange.start}</div>
-                )}
-                {touched.dateRange?.end && errors.dateRange?.end && (
-                  <div className={css.required}>{errors.dateRange.end}</div>
-                )}
+                {touched.dateRange &&
+                  (errors.dateRange?.start || errors.dateRange?.end) && (
+                    <div className={css.required}>
+                      {errors.dateRange.start || errors.dateRange.end}
+                    </div>
+                  )}
               </div>
               <div className={css['form-item-wrap']}>
                 <Field
