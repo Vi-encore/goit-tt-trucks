@@ -8,6 +8,7 @@ import {
   selectFilteredTrucks,
 } from '../../redux/filters/filtersSlice';
 import SecondaryButton from '../SecondaryButton/SecondaryButton';
+import { selectError } from '../../redux/campers/campersSlice';
 
 export default function CampersList() {
   const listEndRef = useRef(null);
@@ -18,6 +19,7 @@ export default function CampersList() {
   const itemsPerPage = 4;
   const visibleCampers = campers.slice(0, page * itemsPerPage) || [];
   const hasMore = visibleCampers.length < campers.length;
+  const error = useSelector(selectError);
 
   function handleLoadMore() {
     setPage(prevPage => prevPage + 1);
@@ -43,7 +45,7 @@ export default function CampersList() {
 
   return (
     <div className={css.container}>
-      {campers.length === 0 && (
+      {campers.length === 0 && !error && (
         <div className={css['not-found-wrap']}>
           <p className={css['not-found']}>No matching campers found!</p>
           <SecondaryButton onClick={handleReset} text="Reset filters" />
